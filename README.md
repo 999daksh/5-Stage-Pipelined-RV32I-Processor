@@ -281,7 +281,7 @@ The processor functionality was verified using **GTKWave** by analyzing simulati
 
 **GitHub Repository:**
 
-https://github.com/YOUR_USERNAME/5-Stage-Pipelined-RV32I-Processor
+https://github.com/999daksh/5-Stage-Pipelined-RV32I-Processor
 
 ---
 
