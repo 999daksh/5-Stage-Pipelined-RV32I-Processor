@@ -7,16 +7,16 @@
 ![Synthesis](https://img.shields.io/badge/Synthesis-Yosys-purple)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-A **32-bit 5-stage pipelined RISC-V (RV32I) processor** designed and implemented in **Verilog HDL**. The processor supports the base RV32I instruction set and incorporates **hazard detection**, **data forwarding**, and **branch handling** for efficient pipelined execution.
+A **32-bit 5-stage pipelined RISC-V (RV32I) processor** implemented in **Verilog HDL**. The processor supports the base **RV32I instruction set** and includes **hazard detection**, **data forwarding**, and **branch handling** to enable efficient pipelined execution.
 
-The design has been **functionally verified using Icarus Verilog**, analyzed through **GTKWave waveform visualization**, synthesized using **Yosys**, and examined using **Xilinx Vivado RTL Analysis**.
+The design was verified using **GTKWave** waveform analysis, synthesized using **Yosys**, and analyzed using **Xilinx Vivado RTL Elaboration**.
 
 ---
 
 ## ✨ Features
 
 - 32-bit RV32I Processor
-- Classic 5-Stage Pipeline
+- Classic 5-Stage Pipeline Architecture
 - Instruction Fetch (IF)
 - Instruction Decode (ID)
 - Execute (EX)
@@ -30,15 +30,13 @@ The design has been **functionally verified using Icarus Verilog**, analyzed thr
 - Register File
 - Separate Instruction and Data Memory
 - Pipeline Registers
-- Verilog Testbench
-- Functional Simulation using Icarus Verilog
-- Waveform Debugging using GTKWave
+- Functional Verification using GTKWave
 - RTL Elaboration using Xilinx Vivado
 - Logic Synthesis using Yosys
 
 ---
 
-# 🏗 Pipeline Architecture
+# 🏗️ Pipeline Architecture
 
 ```
                 +----------------+
@@ -79,10 +77,8 @@ The design has been **functionally verified using Icarus Verilog**, analyzed thr
 │
 ├── rtl/
 ├── testbench/
-├── simulation/
-├── synthesis/
 ├── images/
-├── docs/
+├── synthesis/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
@@ -97,7 +93,7 @@ The design has been **functionally verified using Icarus Verilog**, analyzed thr
 
 - Program Counter
 - Instruction Memory
-- PC + 4 Generator
+- PC + 4 Adder
 - Next PC Logic
 
 ### Instruction Decode (ID)
@@ -118,8 +114,7 @@ The design has been **functionally verified using Icarus Verilog**, analyzed thr
 ### Memory Access (MEM)
 
 - Data Memory
-- Memory Read
-- Memory Write
+- Memory Read / Write
 
 ### Write Back (WB)
 
@@ -130,16 +125,12 @@ The design has been **functionally verified using Icarus Verilog**, analyzed thr
 
 # ⚠️ Hazard Handling
 
-## Data Hazards
-
-Implemented using:
+The processor resolves pipeline hazards using:
 
 - Forwarding Unit
 - Hazard Detection Unit
 
-The forwarding unit resolves RAW hazards whenever possible without introducing pipeline stalls.
-
-Load-use hazards are detected by the Hazard Detection Unit, which inserts the required stall to preserve correct execution.
+Load-use hazards are detected and stalled appropriately, while RAW hazards are minimized using data forwarding.
 
 ---
 
@@ -209,49 +200,43 @@ Branch decisions are computed in the Execute stage using the Branch Comparator a
 
 ---
 
-# 🧪 Functional Verification
+# 🧪 Verification
 
-The processor was verified using a custom Verilog testbench.
+The processor functionality was verified using **GTKWave** by analyzing simulation waveforms for:
 
-### Verification Flow
-
-```
-Verilog RTL
-      │
-      ▼
-Icarus Verilog
-      │
-      ▼
-VCD Waveform
-      │
-      ▼
-GTKWave
-```
-
-Waveforms generated during simulation were analyzed using **GTKWave** to verify:
-
-- Correct Program Counter updates
+- Program Counter updates
 - Pipeline execution
 - Register File operations
 - ALU functionality
-- Memory read/write operations
+- Memory read/write
 - Data forwarding
 - Hazard detection
 - Branch execution
-- Write-back functionality
+- Write-back stage
 
 ---
 
-# 🛠 Tools Used
+# 🛠️ Tools Used
 
 | Tool | Purpose |
-|------|----------|
+|------|---------|
 | Verilog HDL | Hardware Description |
-| Icarus Verilog | Functional Simulation |
-| GTKWave | Waveform Visualization & Debugging |
+| GTKWave | Waveform Analysis & Debugging |
 | Yosys | Logic Synthesis |
 | Xilinx Vivado | RTL Elaboration & Design Analysis |
 | Git & GitHub | Version Control |
+
+---
+
+# 📊 Synthesis Statistics
+
+| Metric | Value |
+|--------|------:|
+| Total Cells | 1217 |
+| D Flip-Flops | 333 |
+| Memories | 3 |
+| Memory Bits | 17,408 |
+| RTL Submodules | 22 |
 
 ---
 
@@ -259,21 +244,25 @@ Waveforms generated during simulation were analyzed using **GTKWave** to verify:
 
 ## RTL Schematic
 
-> *(Insert Vivado RTL/Elaborated Design screenshot here.)*
+![RTL Schematic](images/rtl_schematic.png)
 
 ---
 
-## GTKWave Simulation
+## Complete RTL Design
 
-> *(Insert GTKWave waveform screenshot here.)*
+![RTL Design](images/rtl_complete_design.png)
 
-Waveforms were analyzed to validate the correct operation of all five pipeline stages, hazard detection, forwarding logic, branch execution, and memory operations.
+---
+
+## GTKWave Verification
+
+![GTKWave](images/gtkwave_waveform.png)
 
 ---
 
 ## Yosys Synthesis
 
-> *(Insert Yosys synthesis report or screenshot here.)*
+![Yosys](images/yosys_synthesis.png)
 
 ---
 
@@ -288,12 +277,19 @@ Waveforms were analyzed to validate the correct operation of all five pipeline s
 
 ---
 
+# 📂 Repository
+
+**GitHub Repository:**
+
+https://github.com/YOUR_USERNAME/5-Stage-Pipelined-RV32I-Processor
+
+---
+
 # 📚 References
 
 - RISC-V Unprivileged ISA Specification
 - Computer Organization and Design – Patterson & Hennessy
 - Yosys Open Synthesis Suite
-- Icarus Verilog
 - GTKWave
 - Xilinx Vivado
 
@@ -303,11 +299,14 @@ Waveforms were analyzed to validate the correct operation of all five pipeline s
 
 **Daksh Maheshwari**
 
-B.Tech, Electronics & Communication Engineering  
+B.Tech in Electronics & Communication Engineering  
 Birla Institute of Technology, Mesra
+
+- GitHub: https://github.com/YOUR_USERNAME
+- LinkedIn: https://www.linkedin.com/in/daksh-maheshwari-48612328a/
 
 ---
 
 ## ⭐ Support
 
-If you found this project helpful, consider giving it a **⭐ Star** on GitHub.
+If you found this project useful, consider giving it a **⭐ Star** on GitHub.
