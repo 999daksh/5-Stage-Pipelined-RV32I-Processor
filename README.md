@@ -302,7 +302,7 @@ https://github.com/999daksh/5-Stage-Pipelined-RV32I-Processor
 B.Tech in Electronics & Communication Engineering  
 Birla Institute of Technology, Mesra
 
-- GitHub: https://github.com/YOUR_USERNAME
+- GitHub: https://github.com/999daksh/5-Stage-Pipelined-RV32I-Processor
 - LinkedIn: https://www.linkedin.com/in/daksh-maheshwari-48612328a/
 
 ---
